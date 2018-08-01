@@ -1,0 +1,62 @@
+﻿@page
+@model PDSA.Pages.WorkUnit.WorkProcess.IndexModel
+@{
+    ViewData["Title"] = "WorkProcess";
+}
+<div class="modal" tabindex="-1" role="dialog" id="AddProblemModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nytt problem</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <input asp-for="SelectedProcess" />
+                    <div class="form-group">
+                        <label asp-for="@Model.NewProblem.Name"></label>
+                        <input class="form-control" asp-for="@Model.NewProblem.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.NewProblem.Description"></label>
+                        <input class="form-control" asp-for="@Model.NewProblem.Description" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+   
+                        
+                        <input type="submit" class="btn btn-primary" asp-page-handler="NewProblem">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+        
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<h2>@Model.Process.Name</h2>
+<p>
+    Antal identifierade problem i processen: @Model.Process.Problems.Count
+</p>
+<p>
+    <a asp-page="/WorkUnit/Index" asp-route-UnitID="@Model.UnitID"><button class="btn btn-outline-primary"><i class="fas fa-arrow-circle-left"></i> Tillbaka</button></a>
+</p>
+<div class="card-columns">
+    @foreach (var problem in Model.Process.Problems)
+    {
+        <div class="card">
+            <h4 class="card-header">@problem.Name</h4>
+            <div class="card-body">
+                <p class="card-text">@problem.Description</p>
+            </div>
+        </div>
+    }
+
+</div>
+<button class="btn btn-outline-primary" data-toggle="modal" data-target="#AddProblemModal"><i class="far fa-plus-square fa-lg"></i> Lägg till problem</button>
+

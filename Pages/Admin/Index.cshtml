@@ -1,0 +1,19 @@
+﻿@page
+@model PDSA.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Admin</h2>
+<h4>Skapa ny avdelning</h4>
+<form method="post">
+    <input asp-for="NewUnit.UnitName" />
+    <input type="submit" asp-page-handler="NewUnit" />
+</form>
+<h4>Hantera avdelningar</h4>
+<ul>
+    @foreach(var Unit in Model.Units)
+    {
+        <li><a asp-page="/Admin/HandleUnit" asp-route-id="@Unit.UnitID">@Unit.UnitName</a></li>
+    }
+</ul>

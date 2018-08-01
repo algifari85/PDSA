@@ -1,0 +1,40 @@
+﻿@page
+@model PDSA.Pages.WorkUnit.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>@Model.SelectedUnit.UnitName</h2>
+<h4>Processer</h4>
+<div class="card-columns">
+    @foreach (var process in Model.SelectedUnit.Processes)
+    {
+    <div class="card">
+        <h5 class="card-header" >
+        <a asp-page="/WorkUnit/WorkProcess/Index" asp-route-UnitID="@Model.UnitID" asp-route-ProcessID="@process.ProcessID">@process.Name</a>
+        </h5>
+        <div class="card-body">
+            <p class="card-text">@process.Description</p>
+        </div>
+        <form method="post" class="card-footer">
+            <input asp-for="@Model.UnitID" />
+            <input asp-for="@Model.DeleteProcessID" value="@process.ProcessID"/>
+            <input class="btn btn-danger btn-sm" type="submit" value="Ta bort process" asp-page-handler="DeleteProcess" />
+        </form>
+        
+    </div>
+    }
+</div>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.NewProcess.Name"></label>
+        <input class="form-control" asp-for="@Model.NewProcess.Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.NewProcess.Description"></label>
+        <input class="form-control" asp-for="@Model.NewProcess.Description" />
+    </div>
+    <input asp-for="UnitID" />
+    <input asp-page-handler="AddProcess" class="btn btn-primary" type="submit" value="Lägg till"/>
+</form>

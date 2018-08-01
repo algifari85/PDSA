@@ -1,0 +1,22 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+    <h1>Välj avdelning</h1>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 card">
+            <div class="card-body">
+                <form method="get" class="" asp-page="/WorkUnit/Index">
+                    <div class="form-group">
+                        <label>Avdelning</label>
+                        <select class="form-control" asp-for="UnitID"
+                                asp-items="@(new SelectList(Model.Units,"UnitID","UnitName"))"></select>
+                    </div>
+                    <input class="btn btn-info float-right w-100" type="submit" value="Välj" />
+                </form>
+            </div>
+    </div>
+        <div class="col-md-3"></div>
+    </div>
