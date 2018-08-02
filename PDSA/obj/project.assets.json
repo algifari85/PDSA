@@ -12225,11 +12225,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\source\\repos\\PDSA\\PDSA.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\source\\repos\\PDSA\\PDSA\\PDSA.csproj",
       "projectName": "PDSA",
-      "projectPath": "C:\\Users\\andre\\source\\repos\\PDSA\\PDSA.csproj",
+      "projectPath": "C:\\Users\\andre\\source\\repos\\PDSA\\PDSA\\PDSA.csproj",
       "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andre\\source\\repos\\PDSA\\obj\\",
+      "outputPath": "C:\\Users\\andre\\source\\repos\\PDSA\\PDSA\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
