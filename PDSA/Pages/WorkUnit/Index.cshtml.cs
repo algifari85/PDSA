@@ -34,9 +34,9 @@ namespace PDSA.Pages.WorkUnit
             this.SelectedUnit = _context.Units.Include(p => p.Processes).Single(p => p.UnitID == UnitID);
         }
 
-        public ActionResult OnPostAddProcess(int SelectedUnitID)
+        public ActionResult OnPostAddProcess(int UnitID)
         {
-            SelectedUnit = _context.Units.Single(p => p.UnitID == SelectedUnitID);
+            SelectedUnit = _context.Units.Single(p => p.UnitID == UnitID);
             _context.Entry(SelectedUnit).Collection(u => u.Processes).Load();
             SelectedUnit.Processes.Add(NewProcess);
             _context.Update(SelectedUnit);

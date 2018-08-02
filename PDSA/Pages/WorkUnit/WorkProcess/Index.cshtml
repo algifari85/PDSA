@@ -14,7 +14,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <input asp-for="@Model.UnitID" />
                     <input asp-for="SelectedProcess" />
                     <div class="form-group">
                         <label asp-for="@Model.NewProblem.Name"></label>
@@ -44,19 +44,39 @@
     Antal identifierade problem i processen: @Model.Process.Problems.Count
 </p>
 <p>
-    <a asp-page="/WorkUnit/Index" asp-route-UnitID="@Model.UnitID"><button class="btn btn-outline-primary"><i class="fas fa-arrow-circle-left"></i> Tillbaka</button></a>
+    <a asp-page="/WorkUnit/Index" 
+       asp-route-UnitID="@Model.UnitID"><button class="btn btn-outline-primary"><i class="fas fa-arrow-circle-left"></i> Tillbaka</button></a>
 </p>
 <div class="card-columns">
     @foreach (var problem in Model.Process.Problems)
     {
-        <div class="card">
-            <h4 class="card-header">@problem.Name</h4>
+        
+        <div class="card as-card" >
+           
+           
+            <h4 class="card-header">
+                <a asp-page="/WorkUnit/WorkProcess/Problem"
+                   asp-route-UnitID="@Model.UnitID"
+                   asp-route-ProcessID="@Model.Process.ProcessID"
+                   asp-route-ProblemID="@problem.ProblemID">
+                    @problem.Name
+                </a>
+            </h4>
             <div class="card-body">
                 <p class="card-text">@problem.Description</p>
             </div>
+            <div class="card-footer">
+                <a asp-page="/WorkUnit/WorkProcess/Edit"
+                   asp-route-UnitID="@Model.UnitID"
+                   asp-route-ProcessID="@Model.Process.ProcessID"
+                   asp-route-ProblemID="@problem.ProblemID"
+                   ><i class="far fa-edit"></i></a>
+            </div>
         </div>
+        
     }
 
 </div>
-<button class="btn btn-outline-primary" data-toggle="modal" data-target="#AddProblemModal"><i class="far fa-plus-square fa-lg"></i> Lägg till problem</button>
+<button class="btn btn-outline-primary" data-toggle="modal" data-target="#AddProblemModal">
+    <i class="far fa-plus-square fa-lg"></i> Lägg till problem</button>
 
